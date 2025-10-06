@@ -9,26 +9,21 @@ phases:
       - chmod +x gradlew
       - ./gradlew --version
 
-  pre_build:
-    commands:
-      - echo "Pre-build: printing Java version and environment"
-      - java -version
-
   build:
     commands:
-      - echo "Building the Gradle project..."
-      - ./gradlew clean build --no-daemon
+      - ./gradlew build --scan
 
   post_build:
-    commands:
-      - echo "Build completed on $(date)"
+    finally:
+      - rm -f  /root/.gradle/caches/modules-2/modules-2.lock
+      - rm -fr /root/.gradle/caches/*/plugin-resolution/
 
 cache:
   paths:
-    - ~/.gradle/caches/
-    - ~/.gradle/wrapper/
+    - '/root/.gradle/caches/**/*' 
+    - '/root/.gradle/wrapper/**/*'
 
 artifacts:
   files:
-    - build/libs/demo-0.0.1-SNAPSHOT-plain.jar
-  discard-paths: yes
+    - 'demo-0.0.1-SNAPSHOT-plain.jar'
+  base-directory: 'build/libs'
