@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hello</title>
+  <style>
+    /* light blue background and simple layout */
+    body {
+      background-color: #e6f7ff;
+      color: #022c43;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 2rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(2,44,67,0.08);
+      max-width: 640px;
+    }
+    ul.test-data {
+      padding-left: 1.2rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Hello World, dude!</h1>
+    <p>This is a static HTML page served at <code>/hello</code>. Below is some test data (read-only):</p>
+
+    <h2>Test Data</h2>
+    <ul class="test-data">
+      <li>username: alice</li>
+      <li>username: bob</li>
+      <li>username: charlie</li>
+    </ul>
+
+    <p>Only GET is supported by the endpoint.</p>
+  </div>
+</body>
+</html>
