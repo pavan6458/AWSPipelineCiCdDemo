@@ -1,0 +1,31 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - echo "Installing project dependencies and ensuring Gradle wrapper is executable..."
+      - chmod +x ./gradlew || true
+      - ./gradlew --version
+  pre_build:
+    commands:
+      - echo "Pre-build: printing Java version and environment"
+      - java -version || true
+  build:
+    commands:
+      - echo "Building the Gradle project..."
+      - ./gradlew clean build --no-daemon
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+
+cache:
+  paths:
+    - ~/.gradle/caches/**
+    - ~/.gradle/wrapper/**
+
+artifacts:
+  files:
+    - build/libs/demo-0.0.1-SNAPSHOT-plain.jar
+  discard-paths: yes
