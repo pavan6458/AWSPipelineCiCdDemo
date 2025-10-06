@@ -6,24 +6,27 @@ phases:
       java: corretto17
     commands:
       - echo "Installing project dependencies and ensuring Gradle wrapper is executable..."
-      - chmod +x ./gradlew || true
+      - chmod +x gradlew
       - ./gradlew --version
+
   pre_build:
     commands:
       - echo "Pre-build: printing Java version and environment"
-      - java -version || true
+      - java -version
+
   build:
     commands:
       - echo "Building the Gradle project..."
       - ./gradlew clean build --no-daemon
+
   post_build:
     commands:
-      - echo "Build completed on `date`"
+      - echo "Build completed on $(date)"
 
 cache:
   paths:
-    - ~/.gradle/caches/**
-    - ~/.gradle/wrapper/**
+    - ~/.gradle/caches/
+    - ~/.gradle/wrapper/
 
 artifacts:
   files:
