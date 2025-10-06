@@ -22,5 +22,5 @@ cache:
 
 artifacts:
   files:
-    - 'demo-0.0.1-SNAPSHOT-plain.jar'
+    - '*.jar'
   base-directory: 'build/libs'
